@@ -152,9 +152,12 @@ body{
         padding-left: 0!important;
         padding-right: 0!important;
     }
-
     .m-mobile-width{
         width: 100% !important;
+    }
+    .m-mobile-lr-clear{
+        padding-left: 0!important;
+        padding-right: 0!important;
     }
 
 }
@@ -162,4 +165,9 @@ body{
 .m-padded-left{
     padding-left: 4em !important;
     padding-right: 4em !important;
+}
+
+.m-shadow-small{
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);!important;
+    -webkit-box-shadow: 0 4px 8px rgba(0,0,0,0.2);!important;
 }
