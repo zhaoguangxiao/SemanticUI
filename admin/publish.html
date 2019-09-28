@@ -6,6 +6,8 @@
     <title>博客后端管理页面</title>
     <link rel="stylesheet" type="text/css" href="../static/css/semantic.min.css">
     <link rel="stylesheet" type="text/css" href="../static/css/index.css">
+    <!--引入markdown css-->
+    <link rel="stylesheet" href="../static/markdown/css/editormd.css" />
 </head>
 <body>
 
@@ -72,7 +74,9 @@
             </div>
 
             <div class="field">
-                <textarea placeholder="内容" name="content"></textarea>
+                <div id="test-markdown-view" style="z-index:1 !important;">
+                    <textarea style="display:none;" name="content" placeholder="内容"></textarea>
+                </div>
             </div>
 
             <div class="fields two">
@@ -197,9 +201,26 @@
 
 <!--引入js-->
 <script src="../static/js/jquery.min.js"></script>
-
+<!--引入semantic js-->
 <script src="../static/js/semantic.min.js"></script>
+<!--引入markdownjs-->
+<script src="../static/markdown/editormd.js"></script>
+<script src="../static/markdown/lib/marked.min.js"></script>
+<script src="../static/markdown/lib/prettify.min.js"></script>
+
 <script>
+    var testEditor;
+
+    // markdown 初始化
+    testEditor = editormd("test-markdown-view", {
+        width   : "100%",
+        height  : 640,
+        syncScrolling : "single",
+        path    : "../static/markdown/lib/",
+        // saveHTMLToTextarea : true, // 保存HTML到Textarea
+    });
+
+
     // 移动端动态显示头部标签
     $('.menu.toggle').click(function () {
         $('.m-item').toggleClass('m-mobile-hide');
@@ -209,8 +230,6 @@
     $('.ui.dropdown').dropdown();
 
     // 表单验证
-    $('form').form('reset')
-
     $('.ui.form')
         .form({
             fields: {
