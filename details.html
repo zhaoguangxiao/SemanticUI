@@ -44,7 +44,7 @@
 
 <!--中间内容   ctrl+enter先输入内容然后注释-->
 <!--div +tab 快速补全代码-->
-<div class="m-container-small m-padded-tb-big">
+<div id="middle-content" class="m-container-small m-padded-tb-big">
     <div class="ui container">
         <div class="ui top attached segment">
             <div class="ui header">
@@ -640,23 +640,26 @@ h5,h6{font-size:1em;}
 </div>
 
 
-<div class="m-padded-tb-max m-fixed m-right-button">
+<div id="toolbar-list" class="m-padded-tb-max m-fixed m-right-button" style="display: none;">
     <div class="ui vertical icon buttons">
         <button id="catalog" class="ui teal button" type="button">目录</button>
         <a href="#command-container" class="ui teal button">留言</a>
-        <button class="ui button"><i class="weixin icon"></i></button>
-        <a href="#" class="ui button">
+        <button class="ui button click-wechat"><i class="weixin icon"></i></button>
+        <div id="toTop-div" class="ui button">
             <i class="chevron up icon"></i>
-        </a>
+        </div>
     </div>
 </div>
 
 
-
+<!--目录内容-->
 <div class="ui catalog-click flowing popup transition hidden" style=" width: 250px;!important;">
    <ol class="js-toc">
-
    </ol>
+</div>
+<!--微信二维码-->
+<div id="qrcode" class="ui share-wechat flowing popup transition hidden m-padded-mini" style="width: 130px!important;">
+    <!--<img src="static/images/2017-07-10_59631d2325129.jpg" alt=""  class="ui rounded image">-->
 </div>
 
 
@@ -711,6 +714,12 @@ h5,h6{font-size:1em;}
 <script src="static/js/prism.js"></script>
 <!--引入自动生成目录js-->
 <script src="static/js/tocbot.min.js"></script>
+<!--引入生成二维码js-->
+<script src="static/js/qrcode.min.js"></script>
+<!--平滑滚动js-->
+<script src="static/js/jquery.scrollTo.min.js"></script>
+<!--滚动监听 js-->
+<script src="static/js/jquery.waypoints.min.js"></script>
 
 
 <script>
@@ -747,6 +756,49 @@ h5,h6{font-size:1em;}
         on: 'click',
         position: 'left center'
     });
+
+    // 目录微信二维码
+    $('.click-wechat').popup({
+        popup: $('.share-wechat'),
+        on: 'click',
+        position: 'left center'
+    });
+
+
+
+    //生成二维码
+    var qrcode = new QRCode("qrcode", {
+        text: "http://jindo.dev.naver.com/collie",
+        width: 128,
+        height: 128,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+    });
+
+
+
+    // 返回顶部方法
+    $('#toTop-div').click(function () {
+         $(window).scrollTo(0,500);
+    });
+
+
+
+    // 滚动监听js事件
+    var waypoint = new Waypoint({
+        element: document.getElementById('middle-content'),
+        handler: function(direction) {
+            if (direction == 'down'){
+                $('#toolbar-list').show(100);
+            }else {
+                $('#toolbar-list').hide(500);
+            }
+        }
+    });
+
+
+
 </script>
 </body>
 </html>
