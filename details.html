@@ -5,7 +5,14 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>博客详情页面</title>
     <link rel="stylesheet" type="text/css" href="static/css/semantic.min.css">
+    <!--排版css-->
+    <link rel="stylesheet" href="static/css/typo.css"/>
+    <!--引入动画样式-->
+    <link rel="stylesheet" href="static/css/animate.css">
+    <!--自定义css样式-->
     <link rel="stylesheet" type="text/css" href="static/css/index.css">
+    <!--引入代码高亮css-->
+    <link rel="stylesheet" href="static/css/prism.css">
 </head>
 <body>
 
@@ -59,7 +66,7 @@
                 </div>
             </div>
             <!--图片区域-->
-            <div class="ui attached segment">
+            <div class="ui attached segment animated fadeIn">
                 <img src="static/images/6.png" alt="" class="image ui fluid rounded">
             </div>
 
@@ -70,11 +77,16 @@
                         原创
                     </div>
                 </div>
-                <h2 class="ui center aligned header">
+                <h2 class="ui center aligned header animated heartBeat">
                     蔚来汽车暴跌28%：3年巨亏400亿 突然取消财报电话会
                 </h2>
                 <br>
-                <div id="content" class="m-padded-left m-padded-tb-large">
+                <div id="content" class="typo typo-selection m-padded-left m-padded-tb-large">
+
+                    <pre><code class="language-css">p { color: red }</code></pre>
+
+
+
                     <p>
                         　　北京时间25日消息，蔚来汽车公司（美股NIO）股价收跌20.22%，报2.17美元，盘中暴跌逾28%，创下历史低点1.97美元。在遭遇了汽车召回、持续裁员风波后，蔚来公布了2019年第二季度的财报。根据公告，该公司第二季度净亏损同比增加83%，达到32.9亿元人民币（4.62亿美元），逊于彭博调查的两位分析师26亿元人民币的预估均值，也是2017年有记录以来该公司净亏损额次高。</p>
                     <p>　　<strong>二季度再亏33亿：3年半巨亏400亿</strong></p>
@@ -317,6 +329,11 @@
 <script src="static/js/jquery.min.js"></script>
 
 <script src="static/js/semantic.min.js"></script>
+<!--引入代码高亮js-->
+<script src="static/js/prism.js"></script>
+
+
+
 <script>
     // 移动端动态显示头部标签
     $('.menu.toggle').click(function () {
