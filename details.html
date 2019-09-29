@@ -13,6 +13,8 @@
     <link rel="stylesheet" type="text/css" href="static/css/index.css">
     <!--引入代码高亮css-->
     <link rel="stylesheet" href="static/css/prism.css">
+    <!--引入自动生成目录css-->
+    <link rel="stylesheet" href="static/css/tocbot.css">
 </head>
 <body>
 
@@ -81,46 +83,402 @@
                     蔚来汽车暴跌28%：3年巨亏400亿 突然取消财报电话会
                 </h2>
                 <br>
-                <div id="content" class="typo typo-selection m-padded-left m-padded-tb-large">
+                <div id="content" class="js-toc-content typo typo-selection m-padded-left m-padded-tb-large">
 
                     <pre><code class="language-css">p { color: red }</code></pre>
 
 
 
+
+
+
+                    <h1>中文网页重设与排版：<i class="serif">Typo.css</i></h1><br/>
+
+                    <h2 id="tagline" class="serif">一致化浏览器排版效果，构建最适合中文阅读的网页排版</h2>
+
+                    <ol id="table">
+                        <li><a href="#section1">关于 <i class="serif">Typo.css</i></a></li>
+                        <li><a href="#section2">排版实例</a>
+                            <ul>
+                                <li><a href="#section2-1">例1：论语学而篇第一</a></li>
+                                <li><a href="#section2-2">例2：英文排版</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#section3">附录</a>
+                            <ul>
+                                <li><a href="#appendix1"><i class="serif">Typo.css</i> 排版偏重点</a></li>
+                                <li><a href="#appendix2">开源许可</a></li>
+                            </ul>
+                        </li>
+                    </ol>
+
+                    <h2 id="section1">一、关于 <i class="serif">Typo.css</i></h2>
+
+                    <p><i class="serif">Typo.css</i> 的目的是，在一致化浏览器排版效果的同时，构建最适合中文阅读的网页排版。</p>
+                    <h4>现状和如何去做：</h4>
+
+                    <p class="typo-first">排版是一个麻烦的问题 <sup><a href="#appendix1"># 附录一</a></sup>，需要精心设计，而这个设计却是常被视觉设计师所忽略的。前端工程师更常看到这样的问题，但不便变更。因为在多个 OS 中的不同浏览器渲染不同，改动需要多的时间做回归测试，所以改变变得更困难。而像我们一般使用的
+                        Yahoo、Eric Meyer 和 Alice base.css 中采用的 Reset 都没有很好地考虑中文排版。<i class="serif">Typo.css</i> 要做的就是解决中文排版的问题。</p>
+
+                    <p><strong><i class="serif">Typo.css</i> 测试于如下平台：</strong></p>
+                    <table summary="Typo.css 的测试平台列表">
+                        <thead>
+                        <tr>
+                            <th>OS/浏览器</th>
+                            <th>Firefox</th>
+                            <th>Chrome</th>
+                            <th>Safari</th>
+                            <th>Opera</th>
+                            <th>IE9</th>
+                            <th>IE8</th>
+                            <th>IE7</th>
+                            <th>IE6</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>OS X</td>
+                            <td>✔</td>
+                            <td>✔</td>
+                            <td>✔</td>
+                            <td>✔</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Win 7</td>
+                            <td>✔</td>
+                            <td>✔</td>
+                            <td>✔</td>
+                            <td>✔</td>
+                            <td>✔</td>
+                            <td>✔</td>
+                            <td>✔</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Win XP</td>
+                            <td>✔</td>
+                            <td>✔</td>
+                            <td>✔</td>
+                            <td>✔</td>
+                            <td>-</td>
+                            <td>✔</td>
+                            <td>✔</td>
+                            <td>✔</td>
+                        </tr>
+                        <tr>
+                            <td>Ubuntu</td>
+                            <td>✔</td>
+                            <td>✔</td>
+                            <td>-</td>
+                            <td>✔</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <h4>中文排版的重点和难点</h4>
+
+                    <p>在中文排版中，HTML4 的很多标准在语义在都有照顾到。但从视觉效果上，却很难利用单独的 CSS 来实现，像<abbr title="在文字下多加一个点">着重号</abbr>（例：这里<em class="typo-em">强调一下</em>）。在 HTML4 中，专名号标签（<code>&lt;u&gt;</code>）已经被放弃，而
+                        HTML5 被<a href="http://html5doctor.com/u-element/">重新提起</a>。<i class="serif">Typo.css</i> 也根据实际情况提供相应的方案。我们重要要注意的两点是：</p>
+                    <ol>
+                        <li>语义：语义对应的用法和样式是否与中文排版一致</li>
+                        <li>表现：在各浏览器中的字体、大小和缩放是否如排版预期</li>
+                    </ol>
+                    <p>对于这些，<i class="serif">Typo.css</i> 排版项目的中文偏重注意点，都添加在附录中，详见：</p>
+                    <blockquote>
+                        <b>附录一</b>：<a href="#appendix1"><i class="serif">Typo.css</i> 排版偏重点</a>
+                    </blockquote>
+
+                    <p>目前已有像百姓网等全面使用 <i class="serif">Typo.css</i> 的项目，测试平台的覆盖，特别是在<abbr title="手机、平板电脑等移动平台">移动端</abbr>上还没有覆盖完主流平台，希望有能力的同学能加入测试行列，或者加入到 <i class="serif">Typo.css</i>
+                        的开发。加入方法：<a href="https://github.com/sofish/Typo.css">参与 <i class="serif">Typo.css</i> 开发</a>。如有批评、建议和意见，也随时欢迎给在 Github 直接提 <a
+                                href="https://github.com/sofish/Typo.css/issues">issues</a>，或给<abbr title="Sofish Lin, author of Typo.css"
+                                                                                                    role="author">我</abbr>发<a
+                                href="mailto:sofish@icloud.com">邮件</a>。</p>
+
+
+                    <h2 id="section2">二、排版实例：</h2>
+
+                    <p>提供2个排版实例，第一个中文实例来自于来自于<cite class="typo-unique">张燕婴</cite>的《论语》，由于古文排版涉及到的元素比较多，所以采用《论语》中《学而》的第一篇作为排版实例介绍；第2个来自到经典的
+                        Lorem Ipsum，并加入了一些代码和列表等比较具有代表性的排版元素。</p>
+
+                    <h3 id="section2-1">例1：论语学而篇第一</h3>
+
                     <p>
-                        　　北京时间25日消息，蔚来汽车公司（美股NIO）股价收跌20.22%，报2.17美元，盘中暴跌逾28%，创下历史低点1.97美元。在遭遇了汽车召回、持续裁员风波后，蔚来公布了2019年第二季度的财报。根据公告，该公司第二季度净亏损同比增加83%，达到32.9亿元人民币（4.62亿美元），逊于彭博调查的两位分析师26亿元人民币的预估均值，也是2017年有记录以来该公司净亏损额次高。</p>
-                    <p>　　<strong>二季度再亏33亿：3年半巨亏400亿</strong></p>
+                        <small><b>作者：</b><abbr title="名丘，字仲尼">孔子</abbr>（
+                            <time>前551年9月28日－前479年4月11日</time>
+                            ）
+                        </small>
+                    </p>
+
+                    <h4>本篇引语</h4>
+
                     <p>
-                        　　蔚来汽车发布二季度财报，第二季度营收15.08亿元，市场预期13.09亿元，去年同期4600万元；第二季度归属于股东净亏损32.85亿元，市场预期亏损29.44亿元，去年同期亏损61.1亿元。</p>
-                    <p>
-                        　　2019年上半年财年，蔚来亏损金额已经达到59.37亿元（一季度亏损26.52亿元，二季度亏损32.85亿元）；2016年-2018年三年间，蔚来的亏损金额分别为35.18亿元、75.62亿元、233.28亿元；三年半合计亏损达403.45亿元。</p>
-                    <div class="img_wrapper"><img
-                            src="//n.sinaimg.cn/tech/crawl/31/w528h303/20190925/ce88-ifaencf8546805.jpg" alt=""
-                            data-mcesrc="https://n.sinaimg.cn/spider20190925/31/w528h303/20190925/fab9-ifaencf8423911.jpg"
-                            data-mceselected="1" data-link=""><span class="img_descr"></span></div>
-                    <p>　　<strong>盘中创下历史新低 上市一年较发行价跌去65%</strong></p>
-                    <p>　　蔚来汽车在美国市场一度下跌近28%，创下纪录最大跌幅并触及纪录新低1.97美元。收盘跌20.22%，报2.17美元。</p>
-                    <p>　　2014年11月，蔚来由李斌、刘强东、李想、<span id="hkstock_hk00700"><a
-                            href="http://stock.finance.sina.com.cn/hkstock/quotes/00700.html" class="keyword f_st"
-                            target="_blank">腾讯</a></span><span id="quote_hk00700"></span>、高瓴资本、顺为资本等深刻理解用户的顶尖互联网企业与企业家联合发起创立，并获得淡马锡、<span
-                            id="usstock_BIDU"><a href="http://stock.finance.sina.com.cn/usstock/quotes/BIDU.html"
-                                                 class="keyword f_st" target="_blank">百度</a></span><span
-                            id=quote_BIDU></span>（美股BIDU）资本、红杉、厚朴、联想集团、华平、TPG、GIC、IDG、愉悦资本等数十家知名机构投资。</p>
-                    <p>
-                        　　在众多顶尖互联网大咖入股后，蔚来汽车于2018年9月12日登陆美股，筹集10亿美元，出售1亿6000万股，每股6.26美元，不过这与预期的18亿美元有所减少。不过，在风光上市一年后，蔚来的股价跌到只剩2.17美元，股价较6.26美元的发行价跌去65%。</p>
-                    <p>　　值得关注的是，成本超支、销售疲软和重大召回事件已经导致蔚来汽车股价较一年多前在美国上市的时候大幅下滑。</p>
-                    <p>　　该公司的艰难处境使人们越来越担心，中国对电动汽车市场的补贴加剧了泡沫而且面临破裂风险。</p>
-                    <p>　　Blue Lotus Capital Advisors Ltd．分析师Jason Chen称，人们在思索这家公司是否能继续生存下去。</p>
-                    <p>　　<strong>负面消息不断</strong></p>
-                    <p>　　我们回顾一下蔚来近期发生的大事情。6月，补贴退坡前夕，正值冲量时，蔚来宣布召回4803辆ES8。随后又传出蔚来出售Formula
-                        E车队的消息。8月22日，蔚来创始人兼CEO李斌发布内部信，宣布蔚来将在9月份进行裁员，全球范围内将减少1200个工作岗位，调整后公司的人员规模将在7500人左右。9月5日，蔚来汽车宣布，已与李斌、腾讯控股附属公司达成可转换债券认购协议。根据协议，李斌和腾讯将分别认购1亿美元的可转换债券本金，各分两次平均认购。</p>
-                    <p>
-                        　　大约一年前，蔚来汽车的市值达到了创纪录的119亿美元。然而，成本超支、销售疲软以及召回事件已经导致蔚来汽车的市值自那之后累计大跌了74%。“今明两年，这些电动汽车创业公司将迎来大洗牌。”分析师糜思怡（Siyi
-                        Mi，音译）表示，“之前是风投找他们，但现在已经不是这么回事了。”</p>
-                    <p>
-                        　　值得关注的是，蔚来最新公告称，取消原定于美东时间上午8点举行的2019年第二季度财报电话会议，蔚来在公告中未说明取消原因。此蔚来回应称，电话会议一般是季报的补充，我们认为此次季报已充分涵盖目前需披露的信息。如公司有其他重大事项发生，将会再次通过公告的形式披露。</p>
-                    <!-- news_keyword_pub,usstock,BIDU&hk00700&NIO -->
-                </div>
+                        《学而》是《论语》第一篇的篇名。《论语》中各篇一般都是以第一章的前二三个字作为该篇的篇名。《学而》一篇包括16章，内容涉及诸多方面。其中重点是「吾日三省吾身」；「节用而爱人，使民以时」；「礼之用，和为贵」以及仁、孝、信等道德范畴。 </p>
+
+                    <h4>原文</h4>
+
+                    <p>子曰：「学而时习之，不亦说乎？有朋自远方来，不亦乐乎？人不知，而不愠，不亦君子乎？」 </p>
+
+                    <h4>译文</h4>
+
+                    <p>孔子说：「学了又时常温习和练习，不是很愉快吗？有志同道合的人从远方来，不是很令人高兴的吗？人家不了解我，我也不怨恨、恼怒，不也是一个有德的君子吗？」 </p>
+
+                    <h4>评析</h4>
+
+                    <p>宋代著名学者<u class="typo-u">朱熹</u>对此章评价极高，说它是「入道之门，积德之基」。本章这三句话是人们非常熟悉的。历来的解释都是：学了以后，又时常温习和练习，不也高兴吗等等。三句话，一句一个意思，前后句子也没有什么连贯性。但也有人认为这样解释不符合原义，指出这里的「学」不是指学习，而是指学说或主张；「时」不能解为时常，而是时代或社会的意思，「习」不是温习，而是使用，引申为采用。而且，这三句话不是孤立的，而是前后相互连贯的。这三句的意思是：自己的学说，要是被社会采用了，那就太高兴了；退一步说，要是没有被社会所采用，可是很多朋友赞同<abbr
+                            title="张燕婴">我</abbr>的学说，纷纷到我这里来讨论问题，我也感到快乐；再退一步说，即使社会不采用，人们也不理解我，我也不怨恨，这样做，不也就是君子吗？（见《齐鲁学刊》1986年第6期文）这种解释可以自圆其说，而且也有一定的道理，供读者在理解本章内容时参考。
+                    </p>
+
+                    <p>此外，在对「人不知，而不愠」一句的解释中，也有人认为，「人不知」的后面没有宾语，人家不知道什么呢？当时因为孔子有说话的特定环境，他不需要说出知道什么，别人就可以理解了，却给后人留下一个谜。有人说，这一句是接上一句说的，从远方来的朋友向我求教，我告诉他，他还不懂，我却不怨恨。这样，「人不知」就是「人家不知道我所讲述的」了。这样的解释似乎有些牵强。</p>
+
+                    <p>总之，本章提出以学习为乐事，做到人不知而不愠，反映出孔子学而不厌、诲人不倦、注重修养、严格要求自己的主张。这些思想主张在《论语》书中多处可见，有助于对第一章内容的深入了解。</p>
+
+                    <h3 id="section2-2">例2：英文排版</h3>
+
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+                        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a
+                        type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining
+                        essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+                        passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem
+                        Ipsum.</p>
+                    <blockquote>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </blockquote>
+
+                    <h4>The standard Lorem Ipsum passage, used since the 1500s</h4>
+
+                    <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+
+                    <h4>Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC</h4>
+
+                    <p>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
+                        eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+                        voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
+                        voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
+                        velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim
+                        ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi
+                        consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur,
+                        vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"</p>
+
+                    <h4>List style in action</h4>
+                    <ul>
+                        <li>If you wish to succeed, you should use persistence as your good friend, experience as your reference, prudence as
+                            your brother and hope as your sentry.
+                            <p>如果你希望成功，当以恒心为良友，以经验为参谋，以谨慎为兄弟，以希望为哨兵。</p>
+                        </li>
+                        <li>Sometimes one pays most for the things one gets for nothing.
+                            <p>有时候一个人为不花钱得到的东西付出的代价最高。</p>
+                        </li>
+                        <li>Only those who have the patience to do simple things perfectly ever acquire the skill to do difficult things
+                            easily.
+                            <p>只有有耐心圆满完成简单工作的人，才能够轻而易举的完成困难的事。</p>
+                        </li>
+                    </ul>
+
+                    <h4>You may want to create a perfect <code>&lt;hr /&gt;</code> line, despite the fact that there will never have one
+                    </h4>
+                    <hr/>
+                    <p><abbr title="法国作家罗切福考尔德">La Racheforcauld</abbr> said:
+                        <mark>"Few things are impossible in themselves; and it is often for want of will, rather than of means, that man fails
+                            to succeed".
+                        </mark>
+                        You just need to follow the browser's behavior, and set a right <code>margin</code> to it。it will works nice as the
+                        demo you're watching now. The following code is the best way to render typo in Chinese:
+                    </p>
+                    <pre>
+/* 标题应该更贴紧内容，并与其他块区分，margin 值要相应做优化 */
+h1,h2,h3,h4,h5,h6 {
+    line-height:1;font-family:Arial,sans-serif;margin:1.4em 0 0.8em;
+}
+h1{font-size:1.8em;}
+h2{font-size:1.6em;}
+h3{font-size:1.4em;}
+h4{font-size:1.2em;}
+h5,h6{font-size:1em;}
+
+/* 现代排版：保证块/段落之间的空白隔行 */
+.typo p, .typo pre, .typo ul, .typo ol, .typo dl, .typo form, .typo hr {
+    margin:1em 0 0.6em;
+}
+</pre>
+
+                    <h3 id="section3">三、附录</h3>
+
+                    <h5 id="appendix1">1、<i class="serif">Typo.css</i> 排版偏重点</h5>
+                    <table summary="Typo.css 排版偏重点">
+                        <thead>
+                        <tr>
+                            <th>类型</th>
+                            <th>语义</th>
+                            <th>标签</th>
+                            <th>注意点</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th rowspan="15">基础标签</th>
+                            <td>标题</td>
+                            <td><code>h1</code> ～ <code>h6</code></td>
+                            <td>全局不强制大小，<code>.typo</code> 中标题与其对应的内容应紧贴，并且有相应的大小设置</td>
+                        </tr>
+                        <tr>
+                            <td>上、下标</td>
+                            <td><code>sup</code>/<code>sub</code></td>
+                            <td>保持与 MicroSoft Office Word 等程序的日常排版一致</td>
+                        </tr>
+                        <tr>
+                            <td>引用</td>
+                            <td><code>blockquote</code></td>
+                            <td>显示/嵌套样式</td>
+                        </tr>
+                        <tr>
+                            <td>缩写</td>
+                            <td><code>abbr</code></td>
+                            <td>是否都有下划线，鼠标 <code>hover</code> 是否为帮助手势</td>
+                        </tr>
+                        <tr>
+                            <td>分割线</td>
+                            <td><code>hr</code></td>
+                            <td>显示的 <code>padding</code> 和 <code>margin</code>正确</td>
+                        </tr>
+                        <tr>
+                            <td>列表</td>
+                            <td><code>ul</code>/<code>ol</code>/<code>dl</code></td>
+                            <td>在全局没有 <code>list-style</code>，在 .<code>typo</code> 中对齐正确</td>
+                        </tr>
+                        <tr>
+                            <td>定义列表</td>
+                            <td><code>dl</code></td>
+                            <td>全局 <code>padding</code> 和 <code>margin</code>为0， .<code>typo</code> 中对齐正确</td>
+                        </tr>
+                        <tr>
+                            <td>选项</td>
+                            <td><code>input[type=radio[, checkbox]]</code></td>
+                            <td>与其他 <code>form</code> 元素排版时是否居中</td>
+                        </tr>
+                        <tr>
+                            <td>斜体</td>
+                            <td><code>i</code></td>
+                            <td>只设置一种斜体，让 <code>em</code> 和 <code>cite</code> 显示为正体</td>
+                        </tr>
+                        <tr>
+                            <td>强调</td>
+                            <td><code>em</code></td>
+                            <td>在全局显示正体，在 <code>.typo</code> 中显示与 <code>b</code> 和 <code>strong</code> 的样式一致，为粗体</td>
+                        </tr>
+                        <tr>
+                            <td>加强</td>
+                            <td><code>strong/b</code></td>
+                            <td>显示为粗体</td>
+                        </tr>
+                        <tr>
+                            <td>标记</td>
+                            <td><code>mark</code></td>
+                            <td>类似荧光笔</td>
+                        </tr>
+                        <tr>
+                            <td>印刷</td>
+                            <td><code>small</code></td>
+                            <td>保持为正确字体的 80% 大小，颜色设置为浅灰色</td>
+                        </tr>
+                        <tr>
+                            <td>表格</td>
+                            <td><code>table</code></td>
+                            <td>全局不显示线条，在 <code>table</code> 中显示表格外框，并且表头有浅灰背景</td>
+                        </tr>
+                        <tr>
+                            <td>代码</td>
+                            <td><code>pre</code>/<code>code</code></td>
+                            <td>字体使用 <code>courier</code> 系字体，保持与 <code>serif</code> 有比较一致的显示效果</td>
+                        </tr>
+                        <tr>
+                            <th rowspan="5">特殊符号</th>
+                            <td>着重号</td>
+                            <td><em class="typo-em">在文字下加点</em></td>
+                            <td>在支持 <code>:after</code> 和 <code>:before</code> 的浏览器可以做渐进增强实现</td>
+                        </tr>
+                        <tr>
+                            <td>专名号</td>
+                            <td><u>林建锋</u></td>
+                            <td>专名号，有下划线，使用 <code>u</code> 或都 <code>.typo-u</code> 类</td>
+                        </tr>
+                        <tr>
+                            <td>破折号</td>
+                            <td>——</td>
+                            <td>保持一划，而非两划</td>
+                        </tr>
+                        <tr>
+                            <td>人民币</td>
+                            <td>&yen;</td>
+                            <td>使用两平等线的符号，或者 HTML 实体符号 <code>&amp;yen;</code></td>
+                        </tr>
+                        <tr>
+                            <td>删除符</td>
+                            <td>
+                                <del>已删除（deleted）</del>
+                            </td>
+                            <td>一致化各浏览器显示，中英混排正确</td>
+                        </tr>
+                        <tr>
+                            <th rowspan="3">加强类</th>
+                            <td>专名号</td>
+                            <td><code>.typo-u</code></td>
+                            <td>由于 <code>u</code> 被 HTML4 放弃，在向后兼容上推荐使用 <code>.typo-u</code></td>
+                        </tr>
+                        <tr>
+                            <td>着重符</td>
+                            <td><code>.typo-em</code></td>
+                            <td>利用 <code>:after</code> 和 <code>:before</code> 实现着重符</td>
+                        </tr>
+                        <tr>
+                            <td>清除浮动</td>
+                            <td><code>.clearfix</code></td>
+                            <td>与一般 CSS Reset 保持一对致 API</td>
+                        </tr>
+                        <tr>
+                            <th rowspan="5">注意点</th>
+                            <td colspan="3">（1）中英文混排行高/行距</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">（2）上下标在 IE 中显示效果</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">（3）块/段落分割空白是否符合设计原则</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">（4）input 多余空间问题</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">（5）默认字体色彩，目前采用 <code>#333</code> 在各种浏览显示比较好</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <h5 id="appendix2">2、开源许可</h5>
+
+                    <p><i class="serif">Typo.css</i> 基于 <a href="http://zh.wikipedia.org/wiki/MIT_License">MIT License</a> 开源，使用代码只需说明来源，或者引用 <a
+                            href="http://typo.sofi.sh/license.txt">license.txt</a> 即可。</p>
+
+
+                <pre><code class="language-css">p { color: red }</code></pre>
+
+
+
+
+
+
+            </div>
                 <!--标签-->
                 <div class="m-padded-left">
                     <div class="ui basic teal left pointing label">
@@ -171,10 +529,9 @@
             </div>
 
 
-
             <!--留言区域-->
-            <div class="ui attached segment">
-              <!--留言列表-->
+            <div id="command-container" class="ui attached segment">
+                <!--留言列表-->
                 <div class="ui comments">
                     <h3 class="ui dividing header">Comments</h3>
                     <div class="comment">
@@ -282,6 +639,27 @@
     </div>
 </div>
 
+
+<div class="m-padded-tb-max m-fixed m-right-button">
+    <div class="ui vertical icon buttons">
+        <button id="catalog" class="ui teal button" type="button">目录</button>
+        <a href="#command-container" class="ui teal button">留言</a>
+        <button class="ui button"><i class="weixin icon"></i></button>
+        <a href="#" class="ui button">
+            <i class="chevron up icon"></i>
+        </a>
+    </div>
+</div>
+
+
+
+<div class="ui catalog-click flowing popup transition hidden" style=" width: 250px;!important;">
+   <ol class="js-toc">
+
+   </ol>
+</div>
+
+
 <!--尾部-->
 <footer class="ui inverted segment vertical m-max">
     <div class="ui center aligned container">
@@ -331,10 +709,26 @@
 <script src="static/js/semantic.min.js"></script>
 <!--引入代码高亮js-->
 <script src="static/js/prism.js"></script>
-
+<!--引入自动生成目录js-->
+<script src="static/js/tocbot.min.js"></script>
 
 
 <script>
+    // 初始化目录
+    tocbot.init({
+        // 初始目录到那个区域
+        tocSelector: '.js-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.js-toc-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h1, h2, h3',
+        // For headings inside relative or absolute positioned containers within content.
+        hasInnerContainers: true,
+    });
+
+
+
+
     // 移动端动态显示头部标签
     $('.menu.toggle').click(function () {
         $('.m-item').toggleClass('m-mobile-hide');
@@ -344,6 +738,14 @@
         popup: $('.payButton.popup'),
         on: 'click',
         position: 'bottom center'
+    });
+
+
+    // 点击目录事件
+    $('#catalog').popup({
+        popup: $('.catalog-click.popup'),
+        on: 'click',
+        position: 'left center'
     });
 </script>
 </body>

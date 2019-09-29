@@ -171,3 +171,22 @@ body{
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);!important;
     -webkit-box-shadow: 0 4px 8px rgba(0,0,0,0.2);!important;
 }
+
+
+
+/*postion start*/
+.m-fixed{
+    position: fixed;!important;
+    z-index: 1 !important;
+}
+.m-right-button{
+    bottom: 0 !important;
+    right: 0 !important;
+}
+
+
+
+
+.m-padded-tb-max{
+    padding: 1em !important;
+}
